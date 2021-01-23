@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
-    x:Class="Xamarin.Plugin.DateTimePicker.Controls.DefaultFooterSection"
+    x:Class="Xamarin.Plugin.DateTimePicker.Controls.DefaultDisplaySection"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="{Binding SelectedDateColor}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="40" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Label
-            Margin="40,0,0,0"
+            Margin="40,10,0,10"
             FontAttributes="Bold"
             FontSize="Large"
             HorizontalTextAlignment="Center"
             Text="{Binding SelectedDateText}"
-            TextColor="{Binding SelectedDateColor}"
+            TextColor="{Binding DeselectedDayTextColor}"
             VerticalOptions="CenterAndExpand"
             VerticalTextAlignment="Center" />
 

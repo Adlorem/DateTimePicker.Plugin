@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>DateTimePicker sample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.calendarsample.app</string>
+	<string>com.datetimepickersample.app</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -34,7 +34,7 @@
 	<string>SampleApp</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-		<key>UIAppFonts</key>
+	<key>UIAppFonts</key>
 	<array>
 		<string>font-awesome-5-free-regular.otf</string>
 		<string>font-awesome-5-free-solid.otf</string>

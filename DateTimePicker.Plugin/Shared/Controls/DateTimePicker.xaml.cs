@@ -281,13 +281,13 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
             set => SetValue(HeaderSectionVisibleProperty, value);
         }
 
-        public static readonly BindableProperty FooterSectionVisibleProperty =
-            BindableProperty.Create(nameof(FooterSectionVisible), typeof(bool), typeof(DateTimePicker), true);
+        public static readonly BindableProperty DisplaySectionVisibleProperty =
+            BindableProperty.Create(nameof(DisplaySectionVisible), typeof(bool), typeof(DateTimePicker), true);
 
-        public bool FooterSectionVisible
+        public bool DisplaySectionVisible
         {
-            get => (bool)GetValue(FooterSectionVisibleProperty);
-            set => SetValue(FooterSectionVisibleProperty, value);
+            get => (bool)GetValue(DisplaySectionVisibleProperty);
+            set => SetValue(DisplaySectionVisibleProperty, value);
         }
 
         public static readonly BindableProperty TodayOutlineColorProperty =
@@ -317,17 +317,17 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
             set => SetValue(HeaderSectionTemplateProperty, value);
         }
 
-        public static readonly BindableProperty FooterSectionTemplateProperty =
-          BindableProperty.Create(nameof(FooterSectionTemplate), typeof(DataTemplate), typeof(DateTimePicker), new DataTemplate(() => new DefaultFooterSection()));
+        public static readonly BindableProperty DispalySectionTemplateProperty =
+          BindableProperty.Create(nameof(DisplaySectionTemplate), typeof(DataTemplate), typeof(DateTimePicker), new DataTemplate(() => new DefaultDisplaySection()));
+
+        public DataTemplate DisplaySectionTemplate
+        {
+            get => (DataTemplate)GetValue(DispalySectionTemplateProperty);
+            set => SetValue(DispalySectionTemplateProperty, value);
+        }
 
         public static readonly BindableProperty TimeSectionTemplateProperty =
-          BindableProperty.Create(nameof(TimeSectionTemplate), typeof(DataTemplate), typeof(DateTimePicker), new DataTemplate(() => new TimeSection()));
-
-        public DataTemplate FooterSectionTemplate
-        {
-            get => (DataTemplate)GetValue(FooterSectionTemplateProperty);
-            set => SetValue(FooterSectionTemplateProperty, value);
-        }
+        BindableProperty.Create(nameof(TimeSectionTemplate), typeof(DataTemplate), typeof(DateTimePicker), new DataTemplate(() => new TimeSection()));
 
         public DataTemplate TimeSectionTemplate
         {
@@ -381,7 +381,7 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
         }
 
         public static readonly BindableProperty DayViewCornerRadiusProperty =
-          BindableProperty.Create(nameof(DayViewCornerRadius), typeof(float), typeof(DateTimePicker), 20f);
+          BindableProperty.Create(nameof(DayViewCornerRadius), typeof(float), typeof(DateTimePicker), 15f);
 
         public float DayViewCornerRadius
         {
@@ -565,31 +565,31 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
         #region Public commands
         /// <summary>
         /// When executed calendar moves to previous month.
-        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="FooterSectionTemplate"/>
+        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="DisplaySectionTemplate"/>
         /// </summary>
         public ICommand PrevMonthCommand { get; }
 
         /// <summary>
         /// When executed calendar moves to next month.
-        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="FooterSectionTemplate"/>
+        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="DisplaySectionTemplate"/>
         /// </summary>
         public ICommand NextMonthCommand { get; }
 
         /// <summary>
         /// When executed calendar moves to previous year.
-        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="FooterSectionTemplate"/>
+        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="DisplaySectionTemplate"/>
         /// </summary>
         public ICommand PrevYearCommand { get; }
 
         /// <summary>
         /// When executed calendar moves to next year.
-        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="FooterSectionTemplate"/>
+        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="DisplaySectionTemplate"/>
         /// </summary>
         public ICommand NextYearCommand { get; }
 
         /// <summary>
         /// When executed shows/hides the calendar's current month days view.
-        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="FooterSectionTemplate"/>
+        /// Read only command to use in your <see cref="HeaderSectionTemplate"/> or <see cref="DisplaySectionTemplate"/>
         /// </summary>
         public ICommand ShowHideCalendarCommand { get; }
 
@@ -631,7 +631,7 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
             if (!(newValue is int newHour) || newHour < 0 || newHour > 23)
                 return;
 
-            if (bindable is DateTimePicker calendar && calendar.SelectedHour != newHour)
+            if (bindable is DateTimePicker calendar && oldValue is int oldHour && oldHour != newHour)
             {
                 calendar.UpdateSelectedDateLabel();
             }
@@ -642,7 +642,7 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
             if (!(newValue is int newMinute) || newMinute < 0 || newMinute > 59)
                 return;
 
-            if (bindable is DateTimePicker calendar && calendar.SelectedMinute != newMinute)
+            if (bindable is DateTimePicker calendar && oldValue is int oldMinute && oldMinute != newMinute)
             {
                 calendar.UpdateSelectedDateLabel();
             }

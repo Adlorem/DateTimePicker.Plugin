@@ -58,11 +58,11 @@
             <controls:CalendarHeader />
         </plugin:DateTimePicker.HeaderSectionTemplate>
 
-        <plugin:DateTimePicker.FooterSectionTemplate>
+        <plugin:DateTimePicker.DisplaySectionTemplate>
             <DataTemplate>
                 <controls:CalendarFooter />
             </DataTemplate>
-        </plugin:DateTimePicker.FooterSectionTemplate>
+        </plugin:DateTimePicker.DisplaySectionTemplate>
 
         <plugin:DateTimePicker.EmptyTemplate>
             <DataTemplate>

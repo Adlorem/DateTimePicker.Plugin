@@ -7,9 +7,9 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
     /// Internal class used by Xamarin.Plugin.Calendar
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DefaultFooterSection : ContentView
+    public partial class DefaultDisplaySection : ContentView
     {
-        internal DefaultFooterSection()
+        internal DefaultDisplaySection()
         {
             InitializeComponent();
         }

@@ -6,17 +6,25 @@
     xmlns:controls="clr-namespace:Xamarin.Plugin.DateTimePicker.Controls"
     x:Name="calendar">
     <!--  TODO: Binding size for monthsView, text etc.  -->
+
     <Grid
-        Padding="0,5,0,0"
+        Padding="0,0,0,0"
         IsClippedToBounds="True"
         RowSpacing="5">
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition x:Name="calendarSectionRow" Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <controls:DataTemplateView
+            Grid.Row="0"
+            BindingContext="{x:Reference calendar}"
+            IsVisible="{Binding DisplaySectionVisible, Source={x:Reference calendar}}"
+            ItemTemplate="{Binding DisplaySectionTemplate}" />
 
         <StackLayout
             x:Name="calendarContainer"
+            Grid.Row="1"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
             <controls:DataTemplateView
@@ -62,13 +70,16 @@
         </StackLayout>
 
         <Grid
-            Grid.Row="1"
+            Grid.Row="2"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <controls:DataTemplateView BindingContext="{x:Reference calendar}" ItemTemplate="{Binding TimeSectionTemplate}" Grid.Row="0" />
+            <controls:DataTemplateView
+                Grid.Row="0"
+                BindingContext="{x:Reference calendar}"
+                ItemTemplate="{Binding TimeSectionTemplate}" />
         </Grid>
     </Grid>
 </ContentView>
