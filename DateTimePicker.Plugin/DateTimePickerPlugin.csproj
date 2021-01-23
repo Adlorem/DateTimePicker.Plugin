@@ -6,8 +6,8 @@
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <PackageId>Xamarin.Plugin.DateTimePicker</PackageId>
     <PackageTags>xamarin forms, datetime picker</PackageTags>
-    <PackageProjectUrl>https://github.com/lilcodelab/XamarinForms-Calendar</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/lilcodelab/XamarinForms-Calendar</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Adlorem/DateTimePicker.Plugin</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Adlorem/DateTimePicker.Plugin</RepositoryUrl>
     <PackageReleaseNotes />
     <Copyright>Copyright 2021 Artisso</Copyright>
     <Company>Artisso</Company>
