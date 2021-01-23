@@ -14,7 +14,12 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackLayout Grid.Row="0">
-                <plugin:DateTimePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}"  SelectedHour="{Binding SelectedHour}" SelectedMinute="{Binding SelectedMinute}"/>
+                <plugin:DateTimePicker
+                    MaximumDate="{Binding MaximumDate}"
+                    MinimumDate="{Binding MinimumDate}"
+                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+                    SelectedHour="{Binding SelectedHour}"
+                    SelectedMinute="{Binding SelectedMinute}" />
             </StackLayout>
             <StackLayout
                 Grid.Row="1"

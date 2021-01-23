@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Xamarin.Plugin.DateTimePicker.Models
 {
-    public class DialogModel
+    internal class DialogModel
     {
         private TaskCompletionSource<DateTime?> _tcs = new TaskCompletionSource<DateTime?>();
         private string _cancelButton;
@@ -15,8 +15,10 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         private int _selectedHour;
         private int _selectedMinute;
         private DateTime _selectedDate;
+        private DateTime _minimumDate = DateTime.MinValue;
+        private DateTime _maximumDate = DateTime.MaxValue;
 
-        public DialogModel(string confirmButton, string cancelButton, DateTime? selectedDateTime)
+        public DialogModel(string confirmButton, string cancelButton, DateTime? selectedDateTime, DateTime? minimumDate, DateTime? maximumDate)
         {
             if (selectedDateTime.HasValue)
             {
@@ -31,7 +33,17 @@ namespace Xamarin.Plugin.DateTimePicker.Models
                 _selectedHour = defaultValue.Hour;
                 _selectedMinute = defaultValue.Minute;
             }
-            
+
+            if (minimumDate.HasValue)
+            {
+                _minimumDate = minimumDate.Value;
+            }
+
+            if (maximumDate.HasValue)
+            {
+                _maximumDate = maximumDate.Value;
+            }
+
             _cancelButton = cancelButton;
             _okButton = confirmButton;
         }
@@ -65,6 +77,17 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         {
             set { _selectedDate = value; }
             get => _selectedDate;
+        }
+
+        public DateTime MinimumDate
+        {
+            set { _minimumDate = value; }
+            get => _minimumDate;
+        }
+        public DateTime MaximumDate
+        {
+            set { _maximumDate = value; }
+            get => _maximumDate;
         }
 
         public void CancelPressed()

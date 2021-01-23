@@ -14,7 +14,7 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
     public partial class DialogPage : ContentPage
     {
        
-        public DialogPage(DialogModel model)
+        internal DialogPage(DialogModel model)
         {
             BindingContext = model;
             InitializeComponent();
