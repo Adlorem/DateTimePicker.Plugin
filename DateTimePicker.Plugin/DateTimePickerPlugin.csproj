@@ -56,6 +56,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Shared\Interfaces\**" />
+    <EmbeddedResource Remove="Shared\Interfaces\**" />
+    <None Remove="Shared\Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Shared\Controls\TimeView.xaml.cs" />
     <Compile Remove="Shared\PickerView.cs" />
   </ItemGroup>
@@ -131,10 +137,6 @@
   
   <ItemGroup>
     <None Remove="Shared\Models\NumbersPickerModel.cs" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Shared\Interfaces\" />
   </ItemGroup>
   
   <ItemGroup>
