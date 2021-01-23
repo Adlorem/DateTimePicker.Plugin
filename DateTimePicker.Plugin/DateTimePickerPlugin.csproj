@@ -1,0 +1,157 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;MonoAndroid81;Xamarin.iOS10</TargetFrameworks>
+    <Authors>Adam Biderman</Authors>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <PackageId>Xamarin.Plugin.DateTimePicker</PackageId>
+    <PackageTags>xamarin forms, datetime picker</PackageTags>
+    <PackageProjectUrl>https://github.com/lilcodelab/XamarinForms-Calendar</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lilcodelab/XamarinForms-Calendar</RepositoryUrl>
+    <PackageReleaseNotes />
+    <Copyright>Copyright 2021 Artisso</Copyright>
+    <Company>Artisso</Company>
+    <Owners>Artisso</Owners>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <Version>1.0.0.0</Version>
+    <Description>Customized datetime picker plugin for Xamarin.Forms</Description>
+    <Summary>Customized datetime picker plugin for Xamarin.Forms.</Summary>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>Xamarin.Plugin.DateTimePicker</AssemblyName>
+    <RootNamespace>Xamarin.Plugin.DateTimePicker</RootNamespace>
+
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <DesignTimeBuild>false</DesignTimeBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
+    <DebugType>pdbonly</DebugType>
+    <!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- sourcelink: Include PDB in the built .nupkg -->
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
+    <Compile Include="Shared\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Shared\Controls\TimeView.xaml.cs" />
+    <Compile Remove="Shared\PickerView.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Update="Shared\Controls\DateTimePicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\DayView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\DefaultFooterSection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\DefaultHeaderSection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\DialogPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\MonthDaysView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\NumbersPickerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Shared\Controls\TimeSection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+
+    <None Update="Shared\Controls\DateTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Shared\Controls\DayView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Shared\Controls\DefaultFooterSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Shared\Controls\DefaultHeaderSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Shared\Controls\DefaultHeaderSectionTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Shared\Controls\MonthDaysView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="Android\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="iOS\*.cs" />
+  </ItemGroup>
+  
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+  
+  <ItemGroup>
+    <None Remove="Shared\DecimalDigitVisibleConverter.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Shared\IntegerDigitVisibleConverter.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Shared\Controls\NumbersPickerView.xaml.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Shared\Models\NumbersPickerModel.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Shared\Interfaces\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Shared\DateTimePickerDialog.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Shared\Models\DialogModel.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Shared\Controls\DialogPage.xaml.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Shared\Controls\DateTimePicker.xaml.cs">
+      <DependentUpon>DateTimePicker.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Xamarin.Plugin.DateTimePicker.Controls.TimeSection"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Xamarin.Plugin.DateTimePicker.Controls">
+    <ContentView.Content>
+        <ScrollView HorizontalOptions="Center" Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <local:PickerView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontSize="22"
+                    ItemsSource="{Binding Hours}"
+                    SelectedIndex="{Binding SelectedHour, Mode=TwoWay}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="22"
+                    HorizontalTextAlignment="Center"
+                    Text=":"
+                    VerticalTextAlignment="Center" />
+                <local:PickerView
+                    Grid.Row="0"
+                    FontSize="22"
+                    Grid.Column="2"
+                    ItemsSource="{Binding Minutes}"
+                    SelectedIndex="{Binding SelectedMinute, Mode=TwoWay}" />
+            </Grid>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SampleApp.Views.SimplePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SampleApp.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:plugin="clr-namespace:Xamarin.Plugin.DateTimePicker.Controls;assembly=Xamarin.Plugin.DateTimePicker"
+    x:Name="simpleCalendarPage"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <local:SimplePageViewModel />
+    </ContentPage.BindingContext>
+
+    <plugin:DateTimePicker
+        Padding="10,0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+
+        <plugin:DateTimePicker.EventTemplate>
+            <DataTemplate>
+                <StackLayout
+                    Padding="15,0,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="{Binding Name}" />
+                    <Label
+                        FontSize="Small"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding Description}" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference simpleCalendarPage}}" CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+        </plugin:DateTimePicker.EventTemplate>
+    </plugin:DateTimePicker>
+
+    <!--
+        Styling
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="daysLabelStyle" TargetType="Label">	
+                    <Setter Property="FontAttributes" Value="Italic" />	
+                    <Setter Property="FontSize" Value="18" />	
+                </Style>
+
+                <Style x:Key="daysTitleLabelStyle" TargetType="Label">
+                    <Setter Property="FontAttributes" Value="Bold" />
+                    <Setter Property="FontSize" Value="20" />
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+    -->
+
+    <!--
+        Swipe handling
+        
+        DisableSwipeDetection="False"
+        
+        SwipeLeftCommand="{Binding SwipeLeftCommand}"
+        SwipeRightCommand="{Binding SwipeRightCommand}"
+        SwipeUpCommand="{Binding SwipeUpCommand}"
+        
+        SwipeUpToHideEnabled="False"
+        SwipeToChangeMonthEnabled="False"
+    -->
+
+    <!--
+        Customizations
+        
+        DaysLabelStyle="{StaticResource daysLabelStyle}"
+        DaysTitleLabelStyle="{StaticResource daysTitleLabelStyle}"
+        MonthLabelColor="Red"
+        YearLabelColor="Blue"
+        SelectedDateColor="Red"
+        SelectedDayBackgroundColor="DarkCyan"
+        EventIndicatorColor="Red"
+        EventIndicatorSelectedColor="White"
+        ArrowsColor="DarkCyan"
+        DaysTitleColor="Orange"
+        SelectedDayTextColor="Cyan"
+        DeselectedDayTextColor="Blue"
+        OtherMonthDayColor="Gray"
+        TodayOutlineColor="Blue"
+        TodayFillColor="Silver"
+        DayViewSize="40"
+        DayViewCornerRadius="3"
+        DaysTitleHeight="40"
+    -->
+
+</ContentPage>

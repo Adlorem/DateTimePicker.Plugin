@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Xamarin.Plugin.DateTimePicker.Controls.DialogPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:plugin="clr-namespace:Xamarin.Plugin.DateTimePicker.Controls;assembly=Xamarin.Plugin.DateTimePicker">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0">
+                <plugin:DateTimePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}"  SelectedHour="{Binding SelectedHour}" SelectedMinute="{Binding SelectedMinute}"/>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+                <Button
+                    Margin="10,0,0,0"
+                    Command="{Binding CancelClickedCommand}"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{Binding CancelButton}" />
+                <Button
+                    Margin="0,0,10,0"
+                    Command="{Binding OkClickedCommand}"
+                    HorizontalOptions="EndAndExpand"
+                    Text="{Binding OkButton}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

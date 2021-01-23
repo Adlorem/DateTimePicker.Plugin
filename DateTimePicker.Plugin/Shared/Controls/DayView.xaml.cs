@@ -1,0 +1,29 @@
+﻿using Xamarin.Plugin.DateTimePicker.Models;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using System.Windows.Input;
+
+namespace Xamarin.Plugin.DateTimePicker.Controls
+{
+    /// <summary>
+    /// Internal class used by Xamarin.Plugin.DateTimePicker
+    /// </summary>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DayView : ContentView
+    {        
+        internal DayView()
+        {
+            InitializeComponent();
+        }
+
+        private void OnTapped(object sender, EventArgs e)
+        {
+            if (BindingContext is DayModel dayModel && !dayModel.IsDisabled && dayModel.IsVisible)
+            {
+                dayModel.IsSelected = true;
+                dayModel.DayTappedCommand?.Execute(dayModel.Date);
+            }
+        }
+    }
+}

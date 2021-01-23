@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SampleApp.Views.StartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button
+                x:Name="btnOpenDialog"
+                Clicked="BtnOpenDialog_Clicked"
+                Text="Open Dialog" />
+            <Button
+                x:Name="btnShowEmbed"
+                Clicked="BtnShowEmbed_Clicked"
+                Text="Show Embed Basic Picker" />
+            <Button
+                x:Name="btnShowEmbedAdvanced"
+                Clicked="BtnShowEmbedAdvanced_Clicked"
+                Text="Show Embed Advanced Picker" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
