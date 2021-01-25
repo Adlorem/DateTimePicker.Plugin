@@ -3,7 +3,10 @@
     x:Class="Xamarin.Plugin.DateTimePicker.Controls.DialogPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:plugin="clr-namespace:Xamarin.Plugin.DateTimePicker.Controls;assembly=Xamarin.Plugin.DateTimePicker">
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:plugin="clr-namespace:Xamarin.Plugin.DateTimePicker.Controls;assembly=Xamarin.Plugin.DateTimePicker"
+    ios:Page.ModalPresentationStyle="FormSheet"
+    BackgroundColor="{Binding BackgroundColor}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

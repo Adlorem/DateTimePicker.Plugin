@@ -15,37 +15,21 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         private int _selectedHour;
         private int _selectedMinute;
         private DateTime _selectedDate;
-        private DateTime _minimumDate = DateTime.MinValue;
-        private DateTime _maximumDate = DateTime.MaxValue;
+        private DateTime _minimumDate;
+        private DateTime _maximumDate;
+        private Color _backgroudColor;
 
-        public DialogModel(string confirmButton, string cancelButton, DateTime? selectedDateTime, DateTime? minimumDate, DateTime? maximumDate)
+        public DialogModel(DialogSettings settings)
         {
-            if (selectedDateTime.HasValue)
-            {
-                _selectedDate = selectedDateTime.Value;
-                _selectedHour = selectedDateTime.Value.Hour;
-                _selectedMinute = selectedDateTime.Value.Minute;
-            }
-            else
-            {
-                var defaultValue = DateTime.Now;
-                _selectedDate = defaultValue;
-                _selectedHour = defaultValue.Hour;
-                _selectedMinute = defaultValue.Minute;
-            }
 
-            if (minimumDate.HasValue)
-            {
-                _minimumDate = minimumDate.Value;
-            }
-
-            if (maximumDate.HasValue)
-            {
-                _maximumDate = maximumDate.Value;
-            }
-
-            _cancelButton = cancelButton;
-            _okButton = confirmButton;
+            _selectedDate = settings.SelectedDate.Value;
+            _selectedHour = settings.SelectedHour.Value;
+            _selectedMinute = settings.SelectedMinute.Value;
+            _minimumDate = settings.MinimumDate.Value;
+            _maximumDate = settings.MaximumDate.Value;
+            _cancelButton = settings.CancelButtonText;
+            _okButton = settings.OkButtonText;
+            _backgroudColor = settings.BackgroudColor.Value;
         }
 
         public ICommand CancelClickedCommand { get { return new Command(() => CancelPressed()); } }
@@ -90,6 +74,12 @@ namespace Xamarin.Plugin.DateTimePicker.Models
             get => _maximumDate;
         }
 
+        public Color BackgroundColor
+        {
+            set { _backgroudColor = value; }
+            get => _backgroudColor;
+        }
+
         public void CancelPressed()
         {
             _tcs.SetResult(null);
@@ -99,6 +89,7 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         {
             _tcs.SetResult(new DateTime (SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedHour, SelectedMinute, 0,0));
         }
+
 
         public Task<DateTime?> GetValue()
         {

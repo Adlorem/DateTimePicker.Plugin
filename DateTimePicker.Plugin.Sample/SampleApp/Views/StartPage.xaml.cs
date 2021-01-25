@@ -16,7 +16,7 @@ namespace SampleApp.Views
 
         private async void BtnOpenDialog_Clicked(object sender, EventArgs e)
         {
-            var result = await new DateTimePickerDialog().Show(this, DateTime.Now.AddDays(-10).AddHours(4));
+            var result = await new DateTimePickerDialog().Show(this);
             if (result != null)
             await DisplayAlert("Result", "Selected: " + result.Value.ToString("dd MMM yyyy HH:mm"), "Cancel");
         }
