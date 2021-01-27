@@ -21,6 +21,7 @@ namespace Xamarin.Plugin.DateTimePicker
             ds.SelectedMinute = settings != null && settings.SelectedMinute.HasValue ? settings.SelectedMinute.Value : defaultDate.Minute;
             ds.MinimumDate = settings != null && settings.MinimumDate.HasValue ? settings.MinimumDate.Value : DateTime.MinValue;
             ds.MaximumDate = settings != null && settings.MaximumDate.HasValue ? settings.MaximumDate.Value : DateTime.MaxValue;
+            ds.HourMinTextColor = settings != null && settings.HourMinTextColor.HasValue ? settings.HourMinTextColor.Value : Color.Black;
             var vm = new DialogModel(ds);
 
             return CreateDialog(currentPage, vm);

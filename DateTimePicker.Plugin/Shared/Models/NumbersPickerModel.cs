@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Xamarin.Plugin.DateTimePicker.Models
 {
@@ -46,6 +47,7 @@ namespace Xamarin.Plugin.DateTimePicker.Models
             _decGetters.Add(() => DecimalDigit2);
 
             FontSize = -1;
+            TextColor = Color.Red;
             Value = 0M;
             IntegerDigitLength = 4;
             DecimalDigitLength = 2;
@@ -259,6 +261,17 @@ namespace Xamarin.Plugin.DateTimePicker.Models
             set
             {
                 _fontSize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Color _textColor = Color.Default;
+        public Color TextColor
+        {
+            get { return _textColor; }
+            set
+            {
+                _textColor = value;
                 OnPropertyChanged();
             }
         }

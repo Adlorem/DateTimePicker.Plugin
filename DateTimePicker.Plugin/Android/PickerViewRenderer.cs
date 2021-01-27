@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Plugin.DateTimePicker.Android;
 using Xamarin.Plugin.DateTimePicker.Controls;
+using Color = Android.Graphics.Color;
 
 [assembly: ExportRenderer(typeof(PickerView), typeof(PickerViewRenderer))]
 namespace Xamarin.Plugin.DateTimePicker.Android
@@ -32,11 +33,14 @@ namespace Xamarin.Plugin.DateTimePicker.Android
 
             if (e.NewElement != null)
             {
+                UpdateTextColor();
+
                 Control.ValueChanged += Control_ValueChanged;
 
                 UpdateItemsSource();
                 UpdateSelectedIndex();
                 UpdateFont();
+                
             }
         }
 
@@ -59,6 +63,10 @@ namespace Xamarin.Plugin.DateTimePicker.Android
             else if (e.PropertyName == PickerView.FontSizeProperty.PropertyName)
             {
                 UpdateFont();
+            }
+            else if (e.PropertyName == PickerView.TextColorProperty.PropertyName)
+            {
+                UpdateTextColor();
             }
         }
 
@@ -109,7 +117,7 @@ namespace Xamarin.Plugin.DateTimePicker.Android
             Control.Value = Element.SelectedIndex;
         }
 
-        void UpdateFont()
+        private void UpdateFont()
         {
             var font = string.IsNullOrEmpty(Element.FontFamily) ?
                 Font.SystemFontOfSize(Element.FontSize) :
@@ -118,7 +126,13 @@ namespace Xamarin.Plugin.DateTimePicker.Android
             SetTextSize(Control, font.ToTypeface(), (float)(Element.FontSize * Context.Resources.DisplayMetrics.Density));
         }
 
-        void Control_ValueChanged(object sender, NumberPicker.ValueChangeEventArgs e)
+        private void UpdateTextColor()
+        {
+            var color = Element.TextColor;
+            SetTextColor(Control, color.ToAndroid());
+        }
+
+        private void Control_ValueChanged(object sender, NumberPicker.ValueChangeEventArgs e)
         {
             Element.SelectedIndex = e.NewVal;
         }
@@ -146,6 +160,33 @@ namespace Xamarin.Plugin.DateTimePicker.Android
                         ((Paint)selectorWheelPaintField.Get(numberPicker)).TextSize = textSizeInSp;
                         editText.Typeface = fontFamily;
                         editText.SetTextSize(ComplexUnitType.Px, textSizeInSp);
+                        numberPicker.Invalidate();
+                    }
+                    catch (System.Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine("SetNumberPickerTextColor failed.", e);
+                    }
+                }
+            }
+        }
+
+        private void SetTextColor(NumberPicker numberPicker, Color textColor)
+        {
+            int count = numberPicker.ChildCount;
+            for (int i = 0; i < count; i++)
+            {
+                var child = numberPicker.GetChildAt(i);
+                var editText = child as EditText;
+
+                if (editText != null)
+                {
+                    try
+                    {
+                        Java.Lang.Reflect.Field selectorWheelPaintField = numberPicker.Class
+                            .GetDeclaredField("mSelectorWheelPaint");
+                        selectorWheelPaintField.Accessible = true;
+                        ((Paint)selectorWheelPaintField.Get(numberPicker)).Color = textColor;
+                        editText.SetTextColor(textColor);
                         numberPicker.Invalidate();
                     }
                     catch (System.Exception e)

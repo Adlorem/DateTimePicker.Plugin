@@ -45,6 +45,26 @@ namespace Xamarin.Plugin.DateTimePicker.Shared.Controls
 			vm.FontSize = (double)(newvalue ?? Device.GetNamedSize(NamedSize.Default, (NumbersPickerView)bindable));
 		}
 
+		public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(NumbersPickerView), Color.Default,
+			propertyChanged: OnTextColorChanged);
+
+		public Color TextColor
+		{
+			get { return (Color)GetValue(TextColorProperty); }
+			set { SetValue(TextColorProperty, value); }
+		}
+
+		private static void OnTextColorChanged(BindableObject bindable, object oldvalue, object newvalue)
+		{
+			if (newvalue != null)
+            {
+				return;
+            }
+			var view = (NumbersPickerView)bindable;
+			var vm = view.grid.BindingContext as NumbersPickerModel;
+			vm.TextColor = (Color)newvalue;
+		}
+
 		#endregion
 
 		#region ColumnWidth

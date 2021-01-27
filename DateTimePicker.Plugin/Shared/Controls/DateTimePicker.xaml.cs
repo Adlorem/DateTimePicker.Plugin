@@ -163,6 +163,15 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
             set => SetValue(EmptyTemplateProperty, value);
         }
 
+        public static readonly BindableProperty HourMinTextColorProperty =
+           BindableProperty.Create(nameof(HourMinTextColor), typeof(Color), typeof(DateTimePicker), Color.Black);
+
+        public Color HourMinTextColor
+        {
+            get => (Color)GetValue(HourMinTextColorProperty);
+            set => SetValue(HourMinTextColorProperty, value);
+        }
+
         public static readonly BindableProperty MonthLabelColorProperty =
           BindableProperty.Create(nameof(MonthLabelColor), typeof(Color), typeof(DateTimePicker), Color.FromHex("#2196F3"));
 
@@ -193,37 +202,28 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
         public static readonly BindableProperty DaysTitleColorProperty =
           BindableProperty.Create(nameof(DaysTitleColor), typeof(Color), typeof(DateTimePicker), Color.Default);
 
-        public Color DaysTitleColor
+        public Color DaysTitleColor // this one is ok
         {
             get => (Color)GetValue(DaysTitleColorProperty);
             set => SetValue(DaysTitleColorProperty, value);
         }
 
-        public static readonly BindableProperty SelectedDayTextColorProperty =
+        public static readonly BindableProperty CurrentMonthDayTextColorProperty =
           BindableProperty.Create(nameof(SelectedDayTextColor), typeof(Color), typeof(DateTimePicker), Color.Default);
 
-        public Color SelectedDayTextColor
+        public Color SelectedDayTextColor // sets color for currents month day text
         {
-            get => (Color)GetValue(SelectedDayTextColorProperty);
-            set => SetValue(SelectedDayTextColorProperty, value);
+            get => (Color)GetValue(CurrentMonthDayTextColorProperty);
+            set => SetValue(CurrentMonthDayTextColorProperty, value);
         }
 
-        public static readonly BindableProperty DeselectedDayTextColorProperty =
-          BindableProperty.Create(nameof(DeselectedDayTextColor), typeof(Color), typeof(DateTimePicker), Color.White);
+        public static readonly BindableProperty CurrentlySelectedDayTextColorProperty =
+          BindableProperty.Create(nameof(OtherMonthDayColor), typeof(Color), typeof(DateTimePicker), Color.White);
 
-        public Color DeselectedDayTextColor
+        public Color OtherMonthDayColor //selected day text color
         {
-            get => (Color)GetValue(DeselectedDayTextColorProperty);
-            set => SetValue(DeselectedDayTextColorProperty, value);
-        }
-
-        public static readonly BindableProperty OtherMonthDayColorProperty =
-          BindableProperty.Create(nameof(OtherMonthDayColor), typeof(Color), typeof(DateTimePicker), Color.Default);
-
-        public Color OtherMonthDayColor
-        {
-            get => (Color)GetValue(OtherMonthDayColorProperty);
-            set => SetValue(OtherMonthDayColorProperty, value);
+            get => (Color)GetValue(CurrentlySelectedDayTextColorProperty);
+            set => SetValue(CurrentlySelectedDayTextColorProperty, value);
         }
 
         public static readonly BindableProperty OtherMonthDayIsVisibleProperty =
@@ -245,17 +245,8 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
         }
 
 
-        public static readonly BindableProperty EventIndicatorTextColorProperty =
-         BindableProperty.Create(nameof(EventIndicatorTextColor), typeof(Color), typeof(DateTimePicker), Color.Default);
-
-        public Color EventIndicatorTextColor
-        {
-            get => (Color)GetValue(EventIndicatorTextColorProperty);
-            set => SetValue(EventIndicatorTextColorProperty, value);
-        }
-
         public static readonly BindableProperty ArrowsColorProperty =
-          BindableProperty.Create(nameof(ArrowsColor), typeof(Color), typeof(DateTimePicker), Color.Default);
+          BindableProperty.Create(nameof(ArrowsColor), typeof(Color), typeof(DateTimePicker), Color.FromHex("#2196F3"));
 
         public Color ArrowsColor
         {
@@ -306,6 +297,15 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
         {
             get => (Color)GetValue(TodayFillColorProperty);
             set => SetValue(TodayFillColorProperty, value);
+        }
+
+        public static readonly BindableProperty HoursMinutesTextColorProperty =
+  BindableProperty.Create(nameof(HoursMinutesTextColor), typeof(Color), typeof(DateTimePicker), Color.Red);
+
+        public Color HoursMinutesTextColor
+        {
+            get => (Color)GetValue(HoursMinutesTextColorProperty);
+            set => SetValue(HoursMinutesTextColorProperty, value);
         }
 
         public static readonly BindableProperty HeaderSectionTemplateProperty =

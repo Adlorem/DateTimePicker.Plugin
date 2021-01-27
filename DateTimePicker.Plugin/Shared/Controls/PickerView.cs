@@ -71,5 +71,18 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
 		}
 
 		#endregion
+
+
+		#region TextColor
+
+		public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(PickerView), Color.Black);
+
+		public Color TextColor
+		{
+			get { return (Color)GetValue(TextColorProperty); }
+			set { SetValue(TextColorProperty, value); }
+		}
+
+		#endregion
 	}
 }

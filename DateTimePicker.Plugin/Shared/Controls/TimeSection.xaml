@@ -19,6 +19,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     FontSize="22"
+                    TextColor="{Binding HourMinTextColor}"
                     ItemsSource="{Binding Hours}"
                     SelectedIndex="{Binding SelectedHour, Mode=TwoWay}" />
                 <Label
@@ -30,8 +31,9 @@
                     VerticalTextAlignment="Center" />
                 <local:PickerView
                     Grid.Row="0"
-                    FontSize="22"
                     Grid.Column="2"
+                    FontSize="22"
+                    TextColor="{Binding HourMinTextColor}"
                     ItemsSource="{Binding Minutes}"
                     SelectedIndex="{Binding SelectedMinute, Mode=TwoWay}" />
             </Grid>

@@ -14,6 +14,6 @@ namespace Xamarin.Plugin.DateTimePicker
         public int? SelectedMinute { set; get; }
         public Color? BackgroudColor { set; get; }
         public Color? DaysColor { set; get; }
-        public Color? HourMinutesColor { set; get; }
+        public Color? HourMinTextColor { set; get; }
     }
 }

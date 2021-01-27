@@ -8,7 +8,11 @@
             <Button
                 x:Name="btnOpenDialog"
                 Clicked="BtnOpenDialog_Clicked"
-                Text="Open Dialog" />
+                Text="Open Dialog basic" />
+            <Button
+                x:Name="btnOpenDialog1"
+                Clicked="BtnOpenDialog1_Clicked"
+                Text="Open Dialog disabled days" />
             <Button
                 x:Name="btnShowEmbed"
                 Clicked="BtnShowEmbed_Clicked"

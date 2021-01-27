@@ -61,7 +61,7 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
 
         /// <summary> Bindable property for SelectedDayTextColor </summary>
         public static readonly BindableProperty SelectedDayTextColorProperty =
-          BindableProperty.Create(nameof(SelectedDayTextColor), typeof(Color), typeof(MonthDaysView), Color.White);
+          BindableProperty.Create(nameof(SelectedDayTextColor), typeof(Color), typeof(MonthDaysView), Color.Red);
 
         public Color SelectedDayTextColor
         {
