@@ -18,6 +18,7 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         private DateTime _minimumDate;
         private DateTime _maximumDate;
         private Color _backgroudColor;
+        private Color _hourMinColor;
 
         public DialogModel(DialogSettings settings)
         {
@@ -30,6 +31,7 @@ namespace Xamarin.Plugin.DateTimePicker.Models
             _cancelButton = settings.CancelButtonText;
             _okButton = settings.OkButtonText;
             _backgroudColor = settings.BackgroudColor.Value;
+            _hourMinColor = settings.HourMinTextColor.Value;
         }
 
         public ICommand CancelClickedCommand { get { return new Command(() => CancelPressed()); } }
@@ -78,6 +80,11 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         {
             set { _backgroudColor = value; }
             get => _backgroudColor;
+        }
+        public Color HourMinTextColor
+        {
+            set { _hourMinColor = value; }
+            get => _hourMinColor;
         }
 
         public void CancelPressed()

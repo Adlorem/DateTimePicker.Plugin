@@ -19,9 +19,9 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     FontSize="22"
-                    TextColor="{Binding HourMinTextColor}"
                     ItemsSource="{Binding Hours}"
-                    SelectedIndex="{Binding SelectedHour, Mode=TwoWay}" />
+                    SelectedIndex="{Binding SelectedHour, Mode=TwoWay}"
+                    TextColor="{Binding HourMinTextColor}" />
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
@@ -33,9 +33,9 @@
                     Grid.Row="0"
                     Grid.Column="2"
                     FontSize="22"
-                    TextColor="{Binding HourMinTextColor}"
                     ItemsSource="{Binding Minutes}"
-                    SelectedIndex="{Binding SelectedMinute, Mode=TwoWay}" />
+                    SelectedIndex="{Binding SelectedMinute, Mode=TwoWay}"
+                    TextColor="{Binding HourMinTextColor}" />
             </Grid>
         </ScrollView>
     </ContentView.Content>

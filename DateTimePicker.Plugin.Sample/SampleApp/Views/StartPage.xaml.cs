@@ -29,6 +29,7 @@ namespace SampleApp.Views
             settings.MaximumDate = DateTime.Now.AddDays(10);
             settings.SelectedHour = DateTime.Now.Hour;
             settings.SelectedMinute = DateTime.Now.Minute;
+            settings.HourMinTextColor = Color.Red;
             var result = await new DateTimePickerDialog().Show(this, settings);
             if (result != null)
             await DisplayAlert("Result", "Selected: " + result.Value.ToString("dd MMM yyyy HH:mm"), "Cancel");
