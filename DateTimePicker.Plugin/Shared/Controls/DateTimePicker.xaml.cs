@@ -208,22 +208,22 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
             set => SetValue(DaysTitleColorProperty, value);
         }
 
-        public static readonly BindableProperty CurrentMonthDayTextColorProperty =
-          BindableProperty.Create(nameof(SelectedDayTextColor), typeof(Color), typeof(DateTimePicker), Color.Default);
+        public static readonly BindableProperty SelectedDayTextColorProperty =
+          BindableProperty.Create(nameof(SelectedDayTextColor), typeof(Color), typeof(DateTimePicker), Color.Black);
 
         public Color SelectedDayTextColor // sets color for currents month day text
         {
-            get => (Color)GetValue(CurrentMonthDayTextColorProperty);
-            set => SetValue(CurrentMonthDayTextColorProperty, value);
+            get => (Color)GetValue(SelectedDayTextColorProperty);
+            set => SetValue(SelectedDayTextColorProperty, value);
         }
 
-        public static readonly BindableProperty CurrentlySelectedDayTextColorProperty =
+        public static readonly BindableProperty OtherMonthDayColorProperty =
           BindableProperty.Create(nameof(OtherMonthDayColor), typeof(Color), typeof(DateTimePicker), Color.White);
 
         public Color OtherMonthDayColor //selected day text color
         {
-            get => (Color)GetValue(CurrentlySelectedDayTextColorProperty);
-            set => SetValue(CurrentlySelectedDayTextColorProperty, value);
+            get => (Color)GetValue(OtherMonthDayColorProperty);
+            set => SetValue(OtherMonthDayColorProperty, value);
         }
 
         public static readonly BindableProperty OtherMonthDayIsVisibleProperty =

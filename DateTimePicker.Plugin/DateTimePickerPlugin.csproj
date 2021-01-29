@@ -14,7 +14,7 @@
     <Owners>Artisso</Owners>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-    <Version>1.0.0.2</Version>
+    <Version>1.0.3</Version>
     <Description>Customized datetime picker plugin for Xamarin.Forms</Description>
     <Summary>Customized datetime picker plugin for Xamarin.Forms.</Summary>
     <PackOnBuild>true</PackOnBuild>

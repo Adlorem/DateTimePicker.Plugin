@@ -30,6 +30,7 @@ namespace SampleApp.Views
             settings.SelectedHour = DateTime.Now.Hour;
             settings.SelectedMinute = DateTime.Now.Minute;
             settings.HourMinTextColor = Color.Red;
+            settings.CurrentMonthDaysColor = Color.Blue;
             var result = await new DateTimePickerDialog().Show(this, settings);
             if (result != null)
             await DisplayAlert("Result", "Selected: " + result.Value.ToString("dd MMM yyyy HH:mm"), "Cancel");

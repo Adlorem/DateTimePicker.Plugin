@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Xamarin.Plugin.DateTimePicker.Models
 {
-    internal class DialogModel
+    internal class DialogModel : INotifyPropertyChanged
     {
         private TaskCompletionSource<DateTime?> _tcs = new TaskCompletionSource<DateTime?>();
         private string _cancelButton;
@@ -18,9 +19,13 @@ namespace Xamarin.Plugin.DateTimePicker.Models
         private DateTime _minimumDate;
         private DateTime _maximumDate;
         private Color _backgroudColor;
+        private Color _buttonsColor;
         private Color _hourMinColor;
+        private Color _currentMonthDaysColor;
 
-        public DialogModel(DialogSettings settings)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public DialogModel(DialogSettings settings) 
         {
 
             _selectedDate = settings.SelectedDate.Value;
@@ -31,7 +36,9 @@ namespace Xamarin.Plugin.DateTimePicker.Models
             _cancelButton = settings.CancelButtonText;
             _okButton = settings.OkButtonText;
             _backgroudColor = settings.BackgroudColor.Value;
+            _buttonsColor = settings.ButtonsColor.Value;
             _hourMinColor = settings.HourMinTextColor.Value;
+            _currentMonthDaysColor = settings.CurrentMonthDaysColor.Value;
         }
 
         public ICommand CancelClickedCommand { get { return new Command(() => CancelPressed()); } }
@@ -49,19 +56,25 @@ namespace Xamarin.Plugin.DateTimePicker.Models
 
         public int SelectedHour
         {
-            set { _selectedHour = value; }
+            set { _selectedHour = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedHour)));
+            }
             get => _selectedHour;
         }
 
         public int SelectedMinute
         {
-            set { _selectedMinute = value; }
+            set { _selectedMinute = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedMinute)));
+            }
             get => _selectedMinute;
         }
 
         public DateTime SelectedDate
         {
-            set { _selectedDate = value; }
+            set { _selectedDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedDate)));
+            }
             get => _selectedDate;
         }
 
@@ -81,6 +94,17 @@ namespace Xamarin.Plugin.DateTimePicker.Models
             set { _backgroudColor = value; }
             get => _backgroudColor;
         }
+        public Color ButtonsColor
+        {
+            set { _buttonsColor = value; }
+            get => _buttonsColor;
+        }
+        public Color CurrentMonthDaysColor
+        {
+            set { _currentMonthDaysColor = value; }
+            get => _currentMonthDaysColor;
+        }
+
         public Color HourMinTextColor
         {
             set { _hourMinColor = value; }

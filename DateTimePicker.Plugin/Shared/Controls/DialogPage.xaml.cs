@@ -13,16 +13,20 @@ namespace Xamarin.Plugin.DateTimePicker.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DialogPage : ContentPage
     {
-       
+        private DateTime _defaulDatetValue;
         internal DialogPage(DialogModel model)
         {
             BindingContext = model;
+            _defaulDatetValue = model.SelectedDate;
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void ResetButton_Clicked(object sender, EventArgs e)
         {
-
+            DialogModel model = this.BindingContext as DialogModel;
+            model.SelectedDate = _defaulDatetValue.Date;
+            model.SelectedHour = _defaulDatetValue.Hour;
+            model.SelectedMinute = _defaulDatetValue.Minute;
         }
     }
 }
